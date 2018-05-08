@@ -1,3 +1,4 @@
+import com.okayjam.hadoop.fs.FileUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -24,37 +25,74 @@ public class HDFSAPP {
     Configuration configuration;
     FileSystem fs;
 
+
+    public FileUtil fileUtil = new FileUtil(HDFS_PATH);
+
     /**
      *  初始
      * @throws Exception
      */
-    @Before
+//    @Before
     public void setUp() throws Exception {
         System.out.println("start");
         configuration = new Configuration();
         fs = FileSystem.get(URI.create(HDFS_PATH), configuration);
     }
 
+/*    @Test
+    public void  testmkdirs () throws IOException {
+        fileUtil.mkdirs("/javaTest/te");
+    }
+
+    @Test
+    public void  testRename () throws IOException {
+        fileUtil.rename("/javaTest/te", "/javaTest/aa");
+    }
+
+    @Test
+    public void  testLs () throws IOException {
+        fileUtil.ls("/");
+    }
+
+    @Test
+    public void  testCreateFile () throws IOException {
+        String file = "/javaTest/testfile.txt";
+        String content = "This crate by Java";
+        fileUtil.createFile(file,content);
+    }*/
+
+//
+//    @Test
+//    public void  testDelete () throws IOException {
+////        fileUtil.deleteOnExit("/javaTest");
+//        fileUtil.deleteOnExit("/hello.txt");
+//    }
+
+//
+//    @Test
+//    public void  testCopyFile () throws IOException {
+//        fileUtil.copyFile("/home/hadoop/hello.txt", "/hello.txt");
+//    }
+
+    @Test
+    public void  testDownload () throws IOException {
+        fileUtil.download("/hello.txt", "/home/hadoop/test");
+    }
+
+
     /**
      * 创建目录
      * @throws IOException
      */
-    @Test
+//    @Test
     public void mkdirs() throws IOException {
-        String folder = "/java";
-        Path path = new Path(folder);
-        if (!fs.exists(path)) {
-            fs.mkdirs(path);
-            System.out.println("Create: " + folder);
-        }
-
     }
 
     /**
      * 关闭文件系统
      * @throws Exception
      */
-    @After
+//    @After
     public void tearDown() throws Exception {
         System.out.println("end");
         configuration = null;
