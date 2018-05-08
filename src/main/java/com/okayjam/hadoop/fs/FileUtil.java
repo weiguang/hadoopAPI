@@ -146,7 +146,8 @@ public class FileUtil {
      */
     public void download(String remote, String local) throws IOException {
         Path path = new Path(remote);
-        fs.copyToLocalFile(path, new Path(local));
+        fs.copyToLocalFile(false, path, new Path(local), true);
+//        fs.copyToLocalFile( path, new Path(local));  // windows not work
         System.out.println("download: from" + remote + " to " + local);
 //        fs.close();
     }

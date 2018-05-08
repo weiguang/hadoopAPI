@@ -12,7 +12,7 @@ import java.net.URI;
 /**
  * Created by Weiguang Chen <chen2621978@gmail.com> on 2018/5/8 10:08.
  */
-public class HDFSAPP {
+public class HDFSTest {
 
     /*链接获取方式：
     1.在命令行输入 hdfs getconf -confKey fs.default.name
@@ -71,12 +71,12 @@ public class HDFSAPP {
 //
 //    @Test
 //    public void  testCopyFile () throws IOException {
-//        fileUtil.copyFile("/home/hadoop/hello.txt", "/hello.txt");
+//        fileUtil.copyFile("L:\\workspaces\\IDEA\\hadoopAPI\\src\\test\\java\\1.txt", "/test/");
 //    }
 
     @Test
     public void  testDownload () throws IOException {
-        fileUtil.download("/hello.txt", "/home/hadoop/test");
+        fileUtil.download("/test/1.txt", "L:\\workspaces\\IDEA\\hadoopAPI\\src\\test\\java");
     }
 
 
